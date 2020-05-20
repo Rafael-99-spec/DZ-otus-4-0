@@ -1,46 +1,0 @@
-Script started on Wed 20 May 2020 07:13:05 PM UTC
-]0;vagrant@otuslinux:/home/vagrant[?1034h[root@otuslinux vagrant]# zfs list
-NAME           USED  AVAIL  REFER  MOUNTPOINT
-storage        463K   112M    28K  /storage
-storage/gzip    24K   112M    24K  /storage/gzip
-storage/lz4     24K   112M    24K  /storage/lz4
-storage/lzjb    24K   112M    24K  /storage/lzjb
-storage/zle     24K   112M    24K  /storage/zle
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs set compression=gzip storage/gzip
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs get [K[K[K[K[K[K[K[Kcp pg2600.txt storage/gzip
-cp: cannot create regular file ‘storage/gzip’: No such file or directory
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# cp pg2600.txt storage/gzip[C[C[C/storage/gzip
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs get compressionm[K/,[K[K,compressio[K[Kratio
-NAME          PROPERTY       VALUE     SOURCE
-storage       compression    off       local
-storage       compressratio  1.07x     -
-storage/gzip  compression    gzip      local
-storage/gzip  compressratio  1.08x     -
-storage/lz4   compression    off       inherited from storage
-storage/lz4   compressratio  1.00x     -
-storage/lzjb  compression    off       inherited from storage
-storage/lzjb  compressratio  1.00x     -
-storage/zle   compression    off       inherited from storage
-storage/zle   compressratio  1.00x     -
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs get compression,compressratio[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pcp pg2600.txt /storage/gzip[1Pstorage/gzip[11@zfs set compression=gzip[C[C[C[C[C[C[C[C[C[C[C[C[C[1P storage/gzip[1P storage/gzip[1P storage/gzip[1P storage/gzipl storage/gzipz storage/gzip4 storage/gzip[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Klz4
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs set compression=lz4 storage/lz4[2Pget compression,compressratio[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pcp pg2600.txt /storage/gzipzfs get compression,compressratio[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pcp pg2600.txt /storage/gzip[K[K[K[Klz4
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# cp pg2600.txt /storage/lz4zfs set compression=lz4 storage/lz4[2Pget compression,compressratio[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pcp pg2600.txt /storage/gzip[1Pstorage/gzip[11@zfs set compression=gzip[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Clist[Kset compression=gzip storage/gzip[K[K[K[Klzjb[1P[1P[1P[1P storage/lzjbl storage/lzjbz storage/lzjbj storage/lzjbb storage/lzjb
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs set compression=lzjb storage/lzjb[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pcp pg2600.txt /storage/lz4[K[K[Klzjb
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# cp pg2600.txt /storage/lzjbzfs set compression=lzjb storage/lzjb[1P storage/lzjb[1P storage/lzjb[1P storage/lzjb[1P storage/lzjbz storage/lzjbl storage/lzjbe storage/lzjb[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kzle
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# zfs set compression=zle storage/zle[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pcp pg2600.txt /storage/lzjb[K[K[K[Kzle
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# cp pg2600.txt /storage/zlezfs set compression=zle storage/zle[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pcp pg2600.txt /storage/lzjbzfs set compression=lzjb storage/lzjb[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pcp pg2600.txt /storage/lz4zfs set compression=lz4 storage/lz4[2Pget compression,compressratio[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pcp pg2600.txt /storage/gzipzfs get compression,compressratio
-NAME          PROPERTY       VALUE     SOURCE
-storage       compression    off       local
-storage       compressratio  1.07x     -
-storage/gzip  compression    gzip      local
-storage/gzip  compressratio  1.08x     -
-storage/lz4   compression    lz4       local
-storage/lz4   compressratio  1.08x     -
-storage/lzjb  compression    lzjb      local
-storage/lzjb  compressratio  1.07x     -
-storage/zle   compression    zle       local
-storage/zle   compressratio  1.08x     -
-]0;vagrant@otuslinux:/home/vagrant[root@otuslinux vagrant]# exit
-exit
-
-Script done on Wed 20 May 2020 07:18:53 PM UTC
