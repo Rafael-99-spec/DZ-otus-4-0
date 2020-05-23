@@ -1,0 +1,132 @@
+Script started on Sat 23 May 2020 04:37:46 PM UTC
+]0;vagrant@otuslinux1:/vagrant[?1034h[root@otuslinux1 vagrant]# zpool import -d ${PWD}/zpoolexport -o readonly=on -a
+]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zpool status
+  pool: otus
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME                            STATE     READ WRITE CKSUM
+	otus                            ONLINE       0     0     0
+	  mirror-0                      ONLINE       0     0     0
+	    /vagrant/zpoolexport/filea  ONLINE       0     0     0
+	    /vagrant/zpoolexport/fileb  ONLINE       0     0     0
+
+errors: No known data errors
+]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zpoo[K[K[Kfs list
+NAME             USED  AVAIL  REFER  MOUNTPOINT
+otus            2.03M   350M    24K  /otus
+otus/hometask2  1.88M   350M  1.88M  /otus/hometask2
+]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zfs get compression,compressratio
+NAME            PROPERTY       VALUE     SOURCE
+otus            compression    zle       local
+otus            compressratio  1.00x     -
+otus/hometask2  compression    zle       inherited from otus
+otus/hometask2  compressratio  1.00x     -
+]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zfs get otus
+bad property list: invalid property 'otus'
+usage:
+	get [-rHp] [-d max] [-o "all" | field[,...]]
+	    [-t type[,...]] [-s source[,...]]
+	    <"all" | property[,...]> [filesystem|volume|snapshot|bookmark] ...
+
+The following properties are supported:
+
+	PROPERTY       EDIT  INHERIT   VALUES
+
+	available        NO       NO   <size>
+	clones           NO       NO   <dataset>[,...]
+	compressratio    NO       NO   <1.00x or higher if compressed>
+	createtxg        NO       NO   <uint64>
+	creation         NO       NO   <date>
+	defer_destroy    NO       NO   yes | no
+	filesystem_count  NO       NO   <count>
+	guid             NO       NO   <uint64>
+	logicalreferenced  NO       NO   <size>
+	logicalused      NO       NO   <size>
+	mounted          NO       NO   yes | no
+	origin           NO       NO   <snapshot>
+	receive_resume_token  NO       NO   <string token>
+	refcompressratio  NO       NO   <1.00x or higher if compressed>
+	referenced       NO       NO   <size>
+	snapshot_count   NO       NO   <count>
+	type             NO       NO   filesystem | volume | snapshot | bookmark
+	used             NO       NO   <size>
+	usedbychildren   NO       NO   <size>
+	usedbydataset    NO       NO   <size>
+	usedbyrefreservation  NO       NO   <size>
+	usedbysnapshots  NO       NO   <size>
+	userrefs         NO       NO   <count>
+	written          NO       NO   <size>
+	aclinherit      YES      YES   discard | noallow | restricted | passthrough | passthrough-x
+	acltype         YES      YES   noacl | posixacl
+	atime           YES      YES   on | off
+	canmount        YES       NO   on | off | noauto
+	casesensitivity  NO      YES   sensitive | insensitive | mixed
+	checksum        YES      YES   on | off | fletcher2 | fletcher4 | sha256 | sha512 | skein | edonr
+	compression     YES      YES   on | off | lzjb | gzip | gzip-[1-9] | zle | lz4
+	context         YES       NO   <selinux context>
+	copies          YES      YES   1 | 2 | 3
+	dedup           YES      YES   on | off | verify | sha256[,verify], sha512[,verify], skein[,verify], edonr,verify
+	defcontext      YES       NO   <selinux defcontext>
+	devices         YES      YES   on | off
+	dnodesize       YES      YES   legacy | auto | 1k | 2k | 4k | 8k | 16k
+	exec            YES      YES   on | off
+	filesystem_limit YES       NO   <count> | none
+	fscontext       YES       NO   <selinux fscontext>
+	logbias         YES      YES   latency | throughput
+	mlslabel        YES      YES   <sensitivity label>
+	mountpoint      YES      YES   <path> | legacy | none
+	nbmand          YES      YES   on | off
+	normalization    NO      YES   none | formC | formD | formKC | formKD
+	overlay         YES      YES   on | off
+	primarycache    YES      YES   all | none | metadata
+	quota           YES       NO   <size> | none
+	readonly        YES      YES   on | off
+	recordsize      YES      YES   512 to 1M, power of 2
+	redundant_metadata YES      YES   all | most
+	refquota        YES       NO   <size> | none
+	refreservation  YES       NO   <size> | none
+	relatime        YES      YES   on | off
+	reservation     YES       NO   <size> | none
+	rootcontext     YES       NO   <selinux rootcontext>
+	secondarycache  YES      YES   all | none | metadata
+	setuid          YES      YES   on | off
+	sharenfs        YES      YES   on | off | share(1M) options
+	sharesmb        YES      YES   on | off | sharemgr(1M) options
+	snapdev         YES      YES   hidden | visible
+	snapdir         YES      YES   hidden | visible
+	snapshot_limit  YES       NO   <count> | none
+	sync            YES      YES   standard | always | disabled
+	utf8only         NO      YES   on | off
+	version         YES       NO   1 | 2 | 3 | 4 | 5 | current
+	volblocksize     NO      YES   512 to 128k, power of 2
+	volmode         YES      YES   default | full | geom | dev | none
+	volsize         YES       NO   <size>
+	vscan           YES      YES   on | off
+	xattr           YES      YES   on | off | dir | sa
+	zoned           YES      YES   on | off
+	userused@...     NO       NO   <size>
+	groupused@...    NO       NO   <size>
+	userquota@...   YES       NO   <size> | none
+	groupquota@...  YES       NO   <size> | none
+	written@<snap>   NO       NO   <size>
+
+Sizes are specified in bytes with standard units such as K, M, G, etc.
+
+User-defined properties can be specified by using a name containing a colon (:).
+
+The {user|group}{used|quota}@ properties must be appended with
+a user or group specifier of one of these forms:
+    POSIX name      (eg: "matt")
+    POSIX id        (eg: "126829")
+    SMB name@domain (eg: "matt@sun")
+    SMB SID         (eg: "S-1-234-567-89")
+]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zfs get recordsize
+NAME            PROPERTY    VALUE    SOURCE
+otus            recordsize  128K     local
+otus/hometask2  recordsize  128K     inherited from otus
+]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# exit
+exit
+
+Script done on Sat 23 May 2020 04:39:27 PM UTC
