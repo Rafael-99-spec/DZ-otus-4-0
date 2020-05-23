@@ -1,14 +1,5 @@
 Script started on Sat 23 May 2020 09:47:54 PM UTC
 ]0;vagrant@otuslinux1:/vagrant[?1034h[root@otuslinux1 vagrant]# eee[K[K[Kzfs receive storage/hometask < otus_task2.file[C[1P[1P[1P[1P[1P[1P[1P[1@o[1@t[1@u[1@s
-]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zfs lis[K[K[Kget compression
-NAME                 PROPERTY     VALUE     SOURCE
-otus                 compression  off       default
-otus/hometask        compression  off       default
-otus/hometask@task2  compression  -         -
-]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# zfs list[K[K[K[K[K[K[K[Kfind /storage/recovered/ -name secret_message
-find: ‘/storage/recovered/’: No such file or directory
-]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# find /storage/recovered/ -name secret_message[1P[1P[1P[1P[1P[1P[1P[1@o[1@t[1@u[1@s
-find: ‘/otus/recovered/’: No such file or directory
 ]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# find /otus/recovered/ -name secret_message[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@h[1@o[1@m[1@e[1@t[1@a[1@s[1@k
 /otus/hometask/task1/file_mess/secret_message
 ]0;vagrant@otuslinux1:/vagrant[root@otuslinux1 vagrant]# cat /otus/hometask/task1/file_mess/secret_message
